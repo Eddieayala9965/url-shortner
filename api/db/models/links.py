@@ -1,9 +1,9 @@
 from sqlalchemy import Column, Integer, String, Date, ForeignKey
-from sqlalchemy.orm import declarative_base
+from models import Base
 from pydantic import BaseModel
 from db import engine
 
-Base = declarative_base()
+
 
 class Url(Base):
     __tablename__ = "links"
