@@ -1,8 +1,10 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from db import session
-from models import Url , Base
+from models.links import Url, LinksSchema
+from models.base import Base
+from models.users import User 
 
 app = FastAPI()
 
@@ -32,12 +34,13 @@ def get_url():
     return get_url.all()
 
 
-@app.post("/create/url")
-def post_url( title: str, original_url: str, short_url: str ):
-    new_url = Url( title=title, original_url=original_url, short_url=short_url)
-    session.add(new_url)
+@app.post('/links/add')
+async def add_link(link_data: LinksSchema):
+    link = Url(**link_data.dict())
+    session.add(link)
     session.commit()
-    return {"new url": new_url}
+    return {"Link Added": link.title}
+
 
 def create_tables():
     Base.metadata.create_all(session)

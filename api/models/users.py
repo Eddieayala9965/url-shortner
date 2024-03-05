@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String, UniqueConstraint
 from pydantic import BaseModel, Field
+from sqlalchemy.orm import relationship
 
 from config import settings
 from models.base import Base 
