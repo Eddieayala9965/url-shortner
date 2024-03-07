@@ -19,10 +19,10 @@ export const action = async ({ request }) => {
     data = await response.json();
 
     if (response.ok) {
-      window.alert(data.detail);
+      window.alert("Login Succesful");
       return true;
     } else {
-      window.alert("login failed");
+      window.alert("Login Failed");
       return false;
     }
   };
