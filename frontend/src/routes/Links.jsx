@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 
 export const loader = async () => {
-  const url = "http://localhost:8000/users";
+  const url = "http://localhost:8000/url";
   const options = {
     method: "GET",
     headers: {

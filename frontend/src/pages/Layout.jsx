@@ -4,7 +4,7 @@ const Layout = () => {
   const primaryNav = [
     { title: "Home", url: "/" },
     { title: "Users", url: "/users" },
-    { title: "Users", url: "/links" },
+    { title: "Links", url: "/url" },
     { title: "Add User", url: "/users/add" },
     { title: "Login", url: "/user/login" },
   ];

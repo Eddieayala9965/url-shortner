@@ -4,6 +4,7 @@ import Home from "./routes/Home";
 import ErrorPage from "./pages/ErrorPgae";
 import Users, { loader as userLoader } from "./routes/Users";
 import AddUser, { action as userAction } from "./routes/AddUser";
+import Links, { loader as linkLoader } from "./routes/Links";
 import Login, { action as loginAction } from "./routes/Login";
 import "./App.css";
 
@@ -20,6 +21,11 @@ const router = createBrowserRouter([
         path: "/users",
         element: <Users />,
         loader: userLoader,
+      },
+      {
+        path: "/url",
+        element: <Links />,
+        loader: linkLoader,
       },
       {
         path: "/users/add",
