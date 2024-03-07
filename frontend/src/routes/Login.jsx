@@ -4,32 +4,31 @@ export const action = async ({ request }) => {
   const formData = await request.formData();
   const email = formData.get("userEmail");
   const password = formData.get("userPassword");
-  const data = { email, password };
-  const url = "http://localhost:8000/login";
+  const loginData = { email, password };
 
-  const userLogin = async (data) => {
+  try {
+    const url = `${import.meta.env.VITE_SOURCE_URL}/login`;
     const options = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(loginData),
     };
     const response = await fetch(url, options);
-    data = await response.json();
+    const statusCode = response.status;
+    const data = await response.json();
 
-    if (response.ok) {
-      window.alert("Login Succesful");
-      return true;
-    } else {
-      window.alert("Login Failed");
-      return false;
-    }
-  };
-
-  const loginSuccesful = await userLogin(data);
-  return loginSuccesful ? redirect("/") : redirect("/user/login");
+    const { access_token } = data;
+    localStorage.clear();
+    localStorage.setItem("access_token", access_token);
+    return statusCode === 200 ? true : false;
+  } catch (error) {
+    console.error("ERROR", error);
+    return false;
+  }
 };
+
 const Login = () => {
   return (
     <Form method="POST">
