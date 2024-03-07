@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Nav = ({ navItems }) => {
   return (
     <nav>
-      <ul>
+      <ul className="flex  gap-16">
         {navItems.map((link, index) => {
           return (
             <li key={`${link.title}-${index}`}>

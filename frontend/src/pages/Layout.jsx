@@ -3,14 +3,16 @@ import Nav from "../components/Nav";
 const Layout = () => {
   const primaryNav = [
     { title: "Home", url: "/" },
-    { title: "URL", url: "/url" },
+    { title: "Users", url: "/users" },
+    { title: "Add User", url: "/users/add" },
+    { title: "Login", url: "/user/login" },
   ];
   return (
     <>
-      <div className="flex flex-col justify-center text-center items-center">
+      <div className="flex justify-center text-center items-center ">
         <Nav navItems={primaryNav} />
-        <Outlet />
       </div>
+      <Outlet />
     </>
   );
 };
